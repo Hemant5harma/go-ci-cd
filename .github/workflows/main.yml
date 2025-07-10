@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-deploy:
@@ -33,6 +30,7 @@ jobs:
       - name: Google Cloud authentication
         uses: 'google-github-actions/auth@v2'
         with:
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
       - name: Set up Cloud SDK
