@@ -1,1 +1,28 @@
-hello
+name: Go_CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.23.4
+
+      - name: google cloud credentials
+        uses: 'google-github-actions/auth@v2'
+        with:
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+      - name: Build and Deploy
+        uses: google-github-actions/deploy-appengine@v1
+       

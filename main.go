@@ -24,8 +24,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Get port from environment variable (for App Engine) or default to 8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	
 	http.HandleFunc("/", handler)
-	fmt.Println("Server running on port 8080...")
-	fmt.Println("Visit http://localhost:8080 to see your HTML page!")
-	http.ListenAndServe(":8080", nil)
+	fmt.Printf("Server running on port %s...\n", port)
+	fmt.Printf("Visit http://localhost:%s to see your HTML page!\n", port)
+	http.ListenAndServe(":"+port, nil)
 }

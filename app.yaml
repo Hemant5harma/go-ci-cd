@@ -1,0 +1,30 @@
+runtime: go122
+
+service: default
+
+env_variables:
+  PORT: "8080"
+
+
+# Health check configuration
+# liveness_check:
+#   path: "/"
+#   check_interval_sec: 30
+#   timeout_sec: 4
+#   failure_threshold: 2
+#   success_threshold: 1
+
+# readiness_check:
+#   path: "/"
+#   check_interval_sec: 5
+#   timeout_sec: 4
+#   failure_threshold: 2
+#   success_threshold: 1
+#   app_start_timeout_sec: 300
+
+# Static file handlers (optional - for serving static assets)
+handlers:
+# Route all requests to the Go application
+- url: /.*
+  script: auto
+
