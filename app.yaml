@@ -1,6 +1,6 @@
 runtime: go122
 
-service: default
+service_account: go-cicd@root-territory-454510-c5.iam.gserviceaccount.com
 
 env_variables:
   PORT: "8080"
