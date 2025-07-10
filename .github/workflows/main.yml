@@ -21,10 +21,10 @@ jobs:
           go-version: '1.22'  # Match app.yaml runtime: go122
 
       - name: Download dependencies
-        run: go mod download
+        run: go mod init go-ci-cd
 
       - name: Verify dependencies
-        run: go mod verify
+        run: go mod tidy
 
       - name: Build application
         run: go build -v ./...
