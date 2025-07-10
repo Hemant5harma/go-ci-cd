@@ -39,4 +39,18 @@ jobs:
 
       - name: Deploy to App Engine
         run: gcloud app deploy app.yaml --quiet --project=${{ secrets.GCP_PROJECT_ID }}
-       
+
+
+      - name: send mail notification
+        uses: dawidd6/action-send-mail@v6
+        with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            secure: true
+            username: ${{secrets.MAIL_USERNAME}}
+            password: ${{secrets.MAIL_PASSWORD}}
+            subject: Github Actions job result
+            to: 2021pietcshemant077@poornima.org
+            from: 2021pietcshemant077@poornima.org
+            body: Build job of ${{github.repository}} completed successfully!
+        
