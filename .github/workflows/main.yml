@@ -34,6 +34,9 @@ jobs:
       - name: Set up Cloud SDK
         uses: 'google-github-actions/setup-gcloud@v2'
 
+      - name: update service account
+        run: gcloud app update --service-account=${{ secrets.SERVICE_ACCOUNT }} --project=${{ secrets.GCP_PROJECT_ID }}
+
       - name: Deploy to App Engine
         run: gcloud app deploy app.yaml --quiet --project=${{ secrets.GCP_PROJECT_ID }}
        
