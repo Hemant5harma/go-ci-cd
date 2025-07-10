@@ -22,9 +22,4 @@ env_variables:
 #   success_threshold: 1
 #   app_start_timeout_sec: 300
 
-# Static file handlers (optional - for serving static assets)
-handlers:
-# Route all requests to the Go application
-- url: /.*
-  script: auto
 
